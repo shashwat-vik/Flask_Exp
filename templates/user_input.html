@@ -1,0 +1,21 @@
+<html>
+<head>
+  <title>NEXT</title>
+  <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <form action = "{{url_for('homepage')}}" method = "POST">
+      <div class="form-group">
+        <label class="control-label">Name:</label>
+        <input type="text" name ="name" class="form-control" required>
+        <label class="control-label">Number:</label>
+        <input type="text" name ="number" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <button type="submit" value="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

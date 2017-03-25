@@ -1,5 +1,5 @@
-class Configuration(object):
+class Configuration:
     DEBUG = True
 
 class Database:
-    SQLITE_DATABASE_URL = "sqlite:///test.db"
+    SQLITE_DATABASE_URL="sqlite:///test.db"

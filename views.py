@@ -1,10 +1,24 @@
+from flask import render_template, request, redirect, url_for
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
+
 from app import app
-from flask import render_template
+from models import *
 
-@app.route("/")
+@app.route("/", methods=['POST', 'GET'])
 def homepage():
-    return render_template("pretty.html")
+    if request.method == 'POST':
+        name = request.form['name']
+        number = request.form['number']
+        if not session.query(Customer).filter_by(name=name).all():
+            cs = Customer(name=name, number=number)
+            session.add(cs)
+            session.commit()
+        return redirect(url_for('customers'))
+    else:
+        return render_template("user_input.html")
 
-@app.route("/basic")
-def basic():
-    return render_template("basic.html")
+@app.route("/customers")
+def customers():
+    users = session.query(Customer).all()
+    return render_template("display_users.html", users=users)

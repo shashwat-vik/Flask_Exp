@@ -1,0 +1,28 @@
+<html>
+<head>
+  <title>Users</title>
+  <link href="{{url_for('static', filename='css/bootstrap.min.css')}}" rel="stylesheet">
+</head>
+<body>
+  <div class=container>
+    <table class="table table-bordered table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Number</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for user in (users) -%}
+      <tr>
+        <td>{{loop.index}}</td>
+        <td>{{user.name}}</td>
+        <td>{{user.number}}</td>
+      </tr>
+      {% endfor -%}
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
